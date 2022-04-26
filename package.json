@@ -3,10 +3,9 @@
     "@tensorflow-models/knn-classifier": "^1.2.4",
     "@tensorflow-models/mobilenet": "^2.1.0",
     "@tensorflow/tfjs": "^3.13.0",
-    "canvas": "^2.9.1",
     "dotenv": "^16.0.0",
     "jpeg-js": "^0.4.3",
-    "ssh2-sftp-client": "^8.0.0"
+    "ssh2-sftp-client": "^6.0.1"
   },
   "name": "tensor_train",
   "version": "1.0.0",
@@ -19,7 +18,7 @@
     "tensorflowjs",
     "training",
     "model",
-	"knnclassifier"
+    "knnclassifier"
   ],
   "author": "falldeaf",
   "license": "ISC"

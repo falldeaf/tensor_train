@@ -1,4 +1,4 @@
-const Canvas = require('canvas');
+require('dotenv').config()
 const fs = require('fs');
 const jpeg = require('jpeg-js');
 const tf = require('@tensorflow/tfjs');
@@ -6,28 +6,51 @@ const mobilenetModule = require('@tensorflow-models/mobilenet');
 const knnClassifier = require('@tensorflow-models/knn-classifier');
 
 let Client = require('ssh2-sftp-client');
-let sftp = new Client();
 
 const directory = 'images/plant/';
 
 const init = async function() {
 
-	console.log(process.env.HOST);
-
 	/*
+	let sftp = new Client();
+
+	console.log(process.env.user);
+
 	sftp.connect({
-		host: process.env.HOST,
-		port: '8080',
-		username: 'username',
-		password: '******'
+		host: process.env.host,
+		port: '22',
+		username: process.env.user,
+		password: process.env.pass
 	}).then(() => {
-		return sftp.list('/pathname');
+		return sftp.list('/');
 	}).then(data => {
 		console.log(data, 'the data info');
 	}).catch(err => {
-		console.log(err, 'catch error');
+		console.log(err, 'catch error.');
 	});
+	*/
 
+	let client = new Client();
+
+	const config = {
+		host: process.env.host,
+		port: 22,
+		username: process.env.user,
+		password: process.env.pass
+	};
+	
+	client.connect(config)
+		.then(() => {
+		return client.list('/');
+		})
+		.then(() => {
+		return client.end();
+		})
+		.catch(err => {
+		console.error(err.message);
+		});
+
+	/*
 	
 	const classifier = knnClassifier.create();
 	const mobilenet = await mobilenetModule.load();
