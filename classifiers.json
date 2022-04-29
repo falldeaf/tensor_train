@@ -1,0 +1,8 @@
+{
+	"type": "knnclassifier",
+	"classifiers": [
+		"fine",
+		"dry"
+	],
+	"metatype": "json"
+}
